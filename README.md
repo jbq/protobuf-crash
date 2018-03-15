@@ -1,23 +1,13 @@
 # protobuf-crash
-Crash test for Protobuf PHP extension
+
+Crash test for Protobuf PHP extension version 3.5.1
 
 ## Usage
 
 Run `make` and you should get the following crash output:
 
 ```
-docker build -t crash .
-Sending build context to Docker daemon  44.97MB
-Step 1/3 : FROM jbquenot/base-php:7.2.0-stretch
- ---> 4c1e66463b03
-Step 2/3 : RUN apt-get update && apt-get -y install zip unzip php-pclzip gdb
- ---> Using cache
- ---> 82779b9c1a90
-Step 3/3 : RUN pecl install protobuf
- ---> Using cache
- ---> ab294c579c31
-Successfully built ab294c579c31
-Successfully tagged crash:latest
+... copious build log ...
 docker run --privileged -v /Users/jbq/Work/Baiya/crash:/app crash sh -c 'cd /app && echo run -d extension=protobuf.so src/CrashCommand.php > debug && echo bt >> debug && gdb php -batch -x debug'
 [Thread debugging using libthread_db enabled]
 Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
